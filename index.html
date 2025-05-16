@@ -1,0 +1,275 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>OpenX-VQA: Enhancing Visual Language Models with Robot Visual Question Answering</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        .header {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+        h1 {
+            font-size: 2.2em;
+            margin-bottom: 10px;
+        }
+        h2 {
+            font-size: 1.8em;
+            border-bottom: 1px solid #ddd;
+            padding-bottom: 10px;
+            margin-top: 30px;
+        }
+        .authors {
+            font-size: 1.2em;
+            margin-bottom: 20px;
+        }
+        .institution {
+            font-style: italic;
+            margin-bottom: 20px;
+        }
+        .abstract {
+            background-color: #f9f9f9;
+            padding: 20px;
+            border-radius: 5px;
+            margin-bottom: 30px;
+        }
+        .main-figure {
+            width: 100%;
+            margin: 20px 0;
+            text-align: center;
+        }
+        .main-figure img {
+            max-width: 100%;
+            height: auto;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+        }
+        .figure-caption {
+            font-style: italic;
+            text-align: center;
+            margin-top: 10px;
+        }
+        .resources {
+            background-color: #f0f8ff;
+            padding: 20px;
+            border-radius: 5px;
+            margin: 30px 0;
+        }
+        .resources h3 {
+            margin-top: 0;
+        }
+        .resource-link {
+            display: block;
+            margin: 10px 0;
+            font-size: 1.1em;
+        }
+        .columns {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 30px;
+            margin: 30px 0;
+        }
+        .column {
+            flex: 1;
+            min-width: 300px;
+        }
+        .secondary-figure {
+            width: 100%;
+            margin: 20px 0;
+        }
+        .secondary-figure img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 5px;
+        }
+        footer {
+            margin-top: 50px;
+            text-align: center;
+            font-size: 0.9em;
+            color: #666;
+        }
+        @media (max-width: 768px) {
+            .columns {
+                flex-direction: column;
+            }
+        }
+        .results-table {
+            width: 100%;
+            margin: 20px 0;
+            border-collapse: collapse;
+        }
+        .results-table th,
+        .results-table td {
+            border: 1px solid #ddd;
+            padding: 8px;
+            text-align: center;
+        }
+        .results-table th {
+            background-color: #f2f2f2;
+        }
+        .results-table tr:hover {
+            background-color: #f5f5f5;
+        }
+        .category-header {
+            background-color: #e6f2ff;
+            font-weight: bold;
+        }
+        .title-image {
+            max-width: 80%;
+            height: auto;
+            margin: 0 auto 20px;
+            display: block;
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <img src="image/VQA-title.png" alt="OpenX-VQA Logo" class="title-image">
+        <h1>OpenX-VQA: Enhancing Visual Language Models with Robot Visual Question Answering</h1>
+        <div class="authors">
+            <div>Kepler Cai<sup>1</sup>, Eric Chen<sup>1</sup>, and Research Team</div>
+        </div>
+        <div class="institution">
+            <sup>1</sup>Carnegie Mellon University
+        </div>
+    </div>
+
+    <div class="abstract">
+        <h2>Abstract</h2>
+        <p>
+            Vision-Language Models (VLMs) acquire real-world knowledge and general reasoning ability through internet-scale image-text corpora. Many research institutions are collecting robot data to train Vision Language Action (VLA) models. VLMs have potential to improve robotic systems' capabilities in scene understanding and decision making. We explore the reverse paradigm — using rich, real, multi-modal robot trajectory data to enhance and evaluate VLMs.
+        </p>
+        <p>
+            In this paper, we present Robo2VLM, a Visual Question Answering (VQA) dataset generation framework for training VLMs using robot VLA datasets to automatically convert real robot interactions into structured VQA benchmarks. Given a human tele-operated robot trajectory, Robo2VLM derives ground-truth from <em>non-visual and non-descriptive</em> sensory modalities, such as end-effector pose, gripper aperture, and force sensing.
+        </p>
+        <p>
+            Based on these modalities, it segments the robot trajectory into a sequence of manipulation phases. At each phase, Robo2VLM uses scene and interaction understanding to identify 3D properties of the robot, task goal and the target object. The properties are used to generate representative VQA queries -- images with textural multiple-choice questions -- based on spatial, goal-conditioned, and interaction reasoning question templates. We create OpenX-VQA, a large-scale in-the-wild dataset with 684,710 questions covering 463 distinct scenes and 3396 robotic manipulation tasks from <strong>176k real robot trajectories</strong>. Results suggest that OpenX-VQA can improve VLM capabilities in spatial and interaction reasoning.
+        </p>
+    </div>
+
+    <div class="main-figure">
+        <img src="image/examples.png" alt="OpenX-VQA dataset overview">
+        <div class="figure-caption">
+            <strong>OpenX-VQA dataset overview</strong>. Example questions from the dataset showing different types of VQA queries based on spatial, goal-conditioned, and interaction reasoning.
+        </div>
+    </div>
+
+    <div class="resources">
+        <h3>Resources</h3>
+        <a class="resource-link" href="https://github.com/KeplerC/robo2VLM" target="_blank">
+            <strong>GitHub Repository:</strong> https://github.com/KeplerC/robo2VLM
+        </a>
+        <a class="resource-link" href="https://huggingface.co/datasets/keplerccc/ManipulationVQA-60k" target="_blank">
+            <strong>Dataset (60k):</strong> https://huggingface.co/datasets/keplerccc/ManipulationVQA-60k
+        </a>
+        <a class="resource-link" href="https://huggingface.co/datasets/keplerccc/ManipulationVQA" target="_blank">
+            <strong>Full Dataset:</strong> https://huggingface.co/datasets/keplerccc/ManipulationVQA
+        </a>
+    </div>
+
+    <h2>Introduction</h2>
+    <p>
+        Emerging Vision-Language Models (VLMs) can perform high-level reasoning and identify long-tail objects. Recent robotic manipulation systems that integrate VLMs demonstrate enhanced capabilities in semantic and long horizon task reasoning. Yet, <em>the</em> key challenge persists: the image-text corpora used for VLM pre-training high-quality lack fine-grained spatial information, which are prerequisites for robots to perceive complex scenes, reason spatial relationships, and plan physical interactions.
+    </p>
+    <p>
+        To address this challenge, some research relies on data generation through simulation. However, such data has inherent limitations due to the sim-to-real gap, because simulator cannot model accurately visual properties such as noise, clutter, and lighting variations and physical properties such as contact dynamics, and interactions. Therefore, strong performance in simulation often fails to translate reliably to the physical world. Meanwhile, deriving spatial knowledge from real-world ("in-the-wild") data typically requires extensive and costly human labeling. In contrast, teleoperated robot trajectories typically include precise, structured proprioceptive and kinematic information—joint angles, end-effector poses, gripper states, and force–torque readings—that implicitly encode 3D spatial information. We hypothesize that visual and textual data extracted from robot trajectories can improve VLM's spatial reasoning capabilities.
+    </p>
+
+    <div class="columns">
+        <div class="column">
+            <p>
+                We present Robo2VLM, a multiple-choice Visual Question Answering (VQA) dataset generation framework grounded in real-world robot data. Given a human-teleoperated robot trajectory, Robo2VLM segments the trajectory into distinct manipulation phases, selects representative frames from each phase, and generates questions whose answers are supported by synchronized proprioceptive and kinematic ground truth. We apply Robo2VLM to 176k diverse, real-world trajectories from the Open X-Embodiment (OXE) dataset, producing over 3 million VQA samples. Inspired by data optimization paradigms such as domain reweighting in natural language processing and robot policy learning, we curate OpenX-VQA, a large-scale, in-the-wild VQA dataset with 684,710 questions covering 463 distinct scenes, 3,396 robotic manipulation tasks, and 149 manipulation skills.
+            </p>
+            <p>
+                We evaluate 16 model configurations with state-of-the-art open source models (LLaVA, Llama 3.2 and Qwen 2.5 VL) and with different prompting techniques (zero-shot and chain-of-thought). The results indicate that some VLMs can achieve near human performance in questions related to object reachability and interaction understanding. Evaluation also suggests a significant gap to human performance, especially in complex reasoning of fine-grained spatial relationship and interactions. Finetuning LLaVA with OpenX-VQA improves most of the spatial and interaction capabilities with increasing training dataset size, with a maximum 50% accuracy gain in state reasoning and task understanding.
+            </p>
+        </div>
+        <div class="column">
+            <div class="secondary-figure">
+                <img src="image/pipelinev2.png" alt="Robo2VLM Pipeline">
+                <div class="figure-caption">Robo2VLM Pipeline: Converting robot trajectories to VQA datasets</div>
+            </div>
+            <div class="secondary-figure">
+                <img src="image/Phase.png" alt="Manipulation Phases">
+                <div class="figure-caption">Different phases of robot manipulation used for generating questions</div>
+            </div>
+        </div>
+    </div>
+
+    <h2>Key Contributions</h2>
+    <ol>
+        <li><strong>Robo2VLM:</strong> A VQA data generation framework from real robot trajectories.</li>
+        <li><strong>OpenX-VQA:</strong> An open VQA dataset with 684,710 questions covering diverse and realistic evaluation scenarios for manipulation.</li>
+        <li><strong>Extensive Evaluations:</strong> Comprehensive evaluation data on state-of-the-art and fine-tuned VLMs.</li>
+    </ol>
+
+    <h2>Dataset Characteristics</h2>
+    <div class="columns">
+        <div class="column">
+            <div class="secondary-figure">
+                <img src="image/scene_distribution.pdf" alt="Scene Distribution">
+                <div class="figure-caption">Distribution of scenes in the OpenX-VQA dataset</div>
+            </div>
+        </div>
+        <div class="column">
+            <div class="secondary-figure">
+                <img src="image/top_verbs_distribution.pdf" alt="Top Verbs Distribution">
+                <div class="figure-caption">Distribution of top action verbs in the dataset</div>
+            </div>
+        </div>
+    </div>
+
+    <h2>Experimental Results</h2>
+    <p>
+        We evaluated 16 model configurations with state-of-the-art open source models (LLaVA, Llama 3.2 and Qwen 2.5 VL) using different prompting techniques (zero-shot and chain-of-thought). The results show that Qwen 2.5 VL models generally performed best, with Qwen 2.5 VL-72B achieving the highest zero-shot performance (37.76%) and Qwen 2.5 VL-32B achieving the best CoT accuracy (41.30%).
+    </p>
+    
+    <div class="secondary-figure">
+        <img src="image/llava_accuracy_comparison.pdf" alt="LLaVA Accuracy Comparison">
+        <div class="figure-caption">VQA fine-tuning results on LLaVA 1.6 10k to 50k on task breakdown</div>
+    </div>
+    
+    <div class="secondary-figure">
+        <img src="image/model_performance_radar.pdf" alt="Model Performance Radar">
+        <div class="figure-caption">Comparison between different multimodal foundation models on OpenX-VQA across different sub-tasks</div>
+    </div>
+
+    <h2>Model Performance Comparison</h2>
+    <p>
+        The evaluation results highlight significant differences in model performance across various reasoning categories. Here are some key findings:
+    </p>
+    
+    <ul>
+        <li><strong>Impact of Chain-of-Thought (CoT) Reasoning:</strong> CoT prompting generally enhances performance, especially for Qwen and Llama models. For instance, Qwen 2.5 VL-32B improves from 37.68% to 41.30% overall with CoT prompting.</li>
+        <li><strong>Category-specific Performance:</strong> Models excel in certain categories like Object State (OS), where Qwen 2.5 VL-72B reaches 92.37% with CoT prompting, approaching human performance (96.7%).</li>
+        <li><strong>Persistent Challenges:</strong> All models struggle with fine-grained spatial reasoning tasks. For Spatial Relationship (SR), the best model score is only 22.31% (Qwen 2.5 VL-72B, zero-shot) compared to human performance of 60.0%.</li>
+        <li><strong>Model Scale Effects:</strong> For Qwen models, larger versions generally yield better results in zero-shot scenarios. However, with CoT, the 32B model outperforms the 72B variant, suggesting a potential sweet spot for reasoning effectiveness.</li>
+    </ul>
+
+    <h2>Comparison with Human Performance</h2>
+    <p>
+        Human evaluators demonstrate strong performance across categories, setting a high benchmark. While models are approaching human performance in some categories (e.g., Object State), substantial gaps persist in others. For instance, in Scene Understanding (SU) and Multiple View (MV), humans score 86.7%, while the best model scores are only 29.73% and 22.32% respectively.
+    </p>
+
+    <h2>Fine-tuning Results</h2>
+    <p>
+        Fine-tuning experiments show that increasing the training data from 10k to 50k samples leads to notable performance improvements across most VQA categories. Significant gains were observed in 'Object State' understanding (from 29.34% to 80.24%) and 'Task State-success' (from 47.65% to 68.03%).
+    </p>
+
+    <div class="secondary-figure">
+        <img src="image/finetune_breakdown.png" alt="Fine-tuning Breakdown">
+        <div class="figure-caption">Detailed breakdown of performance improvements after fine-tuning</div>
+    </div>
+
+    <footer>
+        <p>© 2024 OpenX-VQA Research Team. All rights reserved.</p>
+    </footer>
+</body>
+</html> 
