@@ -25,7 +25,7 @@
 
 
   <title>Robo2VLM</title>
-  <link rel="icon" type="image/x-icon" href="static/images/favicon.ico">
+  <link rel="icon" type="image/x-icon" href="static/images/Wizard_Icon.png">
   <link href="https://fonts.googleapis.com/css?family=Google+Sans|Noto+Sans|Castoro"
   rel="stylesheet">
 
@@ -188,6 +188,7 @@
   </div>
 </section>
 
+
 <!-- Dataset Viewer -->
 <section class="section hero is-light">
   <div class="container">
@@ -198,18 +199,96 @@
           <p>
             Explore the Robo2VLM-1 dataset interactively using the Hugging Face dataset viewer below.
           </p>
-          <iframe
-            src="https://huggingface.co/datasets/keplerccc/Robo2VLM-1/embed/viewer/default/train"
-            frameborder="0"
-            width="150%"
-            height="560px"
-            style="display: block; margin: 0 auto; transform: translateX(-25%);"
-          ></iframe>
+          <div style="display: flex; justify-content: center; width: 100%; overflow-x: auto;">
+            <iframe
+              src="https://huggingface.co/datasets/keplerccc/Robo2VLM-1/embed/viewer/default/train"
+              frameborder="0"
+              width="150%"
+              height="560px"
+              style="max-width: 150%;"
+            ></iframe>
+          </div>
         </div>
       </div>
     </div>
   </div>
 </section>
+
+<section class="section hero is-small">
+  <div class="container is-max-desktop">
+    <div class="columns is-centered">
+      <div class="column is-full">
+        <div class="content">
+          <h2 class="title is-3">Question Prototype</h2>
+         <p>
+              <img src="static/images/question-prototype.png" alt="Directional Weight Score" class="blend-img-background center-image" style="max-width: 100%; height: auto;" />
+            </p>
+            <p>
+
+
+
+            </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+
+
+
+
+<section class="section hero is-light">
+  <div class="container is-max-desktop">
+    <div class="columns is-centered">
+      <div class="column is-full">
+        <div class="content">
+          <h2 class="title is-3">Robo2VLM-1 Dataset Statistics</h2>
+         <p>
+              <img src="static/images/data_stats.png" alt="Directional Weight Score" class="blend-img-background center-image" style="max-width: 100%; height: auto;" />
+            </p>
+            <p>
+              Distribution and key statistics of Robo2VLM-1 dataset. (Left) Robo2VLM-1covers diverse scenes with the most frequent scenes in office (33.6%), lab (25.3%), and kitchen (16.9\%). (Middle) Robo2VLM-1 covers tasks including common manipulation actions include pick (21.5%), put (20.6%), and move (9.9%). (Right) The table summarizes key dataset statistics including question characteristics, answer choices, and image resolutions.            </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section hero is-small">
+  <div class="container is-max-desktop">
+    <div class="columns is-centered">
+      <div class="column is-full">
+        <div class="content">
+          <h2 class="title is-3">Benchmarking VLM Capabilities</h2>
+         <p>
+              <img src="static/images/benchmark-stats.png" alt="Directional Weight Score" class="blend-img-background center-image" style="max-width: 100%; height: auto;" />
+            </p>
+            <p>Performance Comparison of Multimodal Foundation Models on OpenX-VQA Benchmark Categories (%). Upper part: zero-shot. Lower part: with CoT prompting.
+            </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section hero is-light">
+  <div class="container is-max-desktop">
+    <div class="columns is-centered">
+      <div class="column is-full">
+        <div class="content">
+          <h2 class="title is-3">Finetuning Results</h2>
+         <p>
+              <img src="static/images/finetune_breakdown.png" alt="Directional Weight Score" class="blend-img-background center-image" style="max-width: 100%; height: auto;" />
+            </p>
+            <p>
+              Fine-tuning LLaVA 1.6 with increasing training data of robo2vlm-1 from 10k to 50k VQA items. Accuracy improvements almost all categories compared to no fine-tuning.        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
 
 <!--BibTex citation -->
   <section class="section" id="BibTeX">
